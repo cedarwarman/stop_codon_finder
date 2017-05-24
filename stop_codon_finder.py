@@ -29,7 +29,7 @@ if len(sys.argv) == 1:
 # Sets the window size. Here upstream referes to towards to coding region of
 # the gene, while downstream refers to the 3' UTR region:
 window_upstream_size = 200
-window_downstream_size = 100
+window_downstream_size = 200
 
 # Creates some lists to store important info. The script processes each line
 # individually, but doesn't know which CDS will be the end CDS until it
@@ -46,7 +46,7 @@ list_pos_counter = 0
 
 # Opens the gff3 file and first separates into a list based on \t
 fandle = io.open(sys.argv[1], "rU")
-out_fandle = io.open("test_output.bed", "wb")
+out_fandle = io.open("stop_window_output.bed", "wb")
 
 for line in fandle:
     linestripped = line.strip()
