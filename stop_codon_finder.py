@@ -77,7 +77,6 @@ for line in fandle:
                     # second isoforms and up will be ignored.
                     if re.search(r"_P01$", \
                      current_gene_name_list[list_pos_counter - 1]):
-                     print("po1 found")
                         if current_strand_list[list_pos_counter - 1] == "+":
                             current_window_start = (int(current_CDS_end_list[ \
                              list_pos_counter - 1]) - \

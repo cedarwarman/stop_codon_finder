@@ -75,9 +75,8 @@ for line in fandle:
                    current_gene_name_list[list_pos_counter - 1]:
                     # Checks to see if it's the first isoform. For this script,
                     # second isoforms and up will be ignored.
-                    if re.search(r"_P01$", \
+                    if re.search(r"_T001$", \
                      current_gene_name_list[list_pos_counter - 1]):
-                     print("po1 found")
                         if current_strand_list[list_pos_counter - 1] == "+":
                             current_window_start = (int(current_CDS_end_list[ \
                              list_pos_counter - 1]) - \
@@ -93,11 +92,14 @@ for line in fandle:
                              list_pos_counter - 1] + "\t")
                             out_fandle.write("1" + "\t")
                             out_fandle.write("+" + "\n")
+                        # One of the things that changed in the new annotation
+                        # version was the order of the minus strand genes. I've
+                        # basically reversed it here to match the new version.
                         if current_strand_list[list_pos_counter - 1] == "-":
                             current_window_start = (int(current_CDS_start_list[ \
-                             0]) - int(window_downstream_size)) 
+                             list_pos_counter - 1]) - int(window_downstream_size)) 
                             current_window_end = (int(current_CDS_start_list[ \
-                             0]) + int(window_upstream_size)) 
+                             list_pos_counter - 1]) + int(window_upstream_size)) 
                             out_fandle.write(current_chr_list[ \
                              list_pos_counter - 1] + "\t")
                             out_fandle.write(str(current_window_start) + "\t")
