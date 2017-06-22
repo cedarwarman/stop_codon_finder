@@ -15,7 +15,8 @@
 # <6>   Strand
 #
 # Usage:
-# stop_codon_finder.py [genome_annotations.gff3]
+# stop_codon_finder.py [genome_annotations.gff3] [win_upstream_size]
+# [win_downstream_size] 
 
 import sys
 import io
@@ -23,13 +24,19 @@ import re
 
 # Checks to see if any files were supplied
 if len(sys.argv) == 1:
-    print("\nNo files supplied.\n\nUsage: stop_codon_finder.py [FILE]\n")
+    print("\nNo files supplied.\n\nUsage: stop_codon_finder.py [FILE]" 
+          " [win_upstream_size] [win_downstream_size]\n")
     quit()
+
+# Prints parameters
+print("Input file is: " + str(sys.argv[1]))
+print("Upstream window size is: " + str(sys.argv[2]))
+print("Downstream window size is: " + str(sys.argv[3]))
 
 # Sets the window size. Here upstream referes to towards to coding region of
 # the gene, while downstream refers to the 3' UTR region:
-window_upstream_size = 200
-window_downstream_size = 200
+window_upstream_size = sys.argv[2]
+window_downstream_size = sys.argv[3]
 
 # Creates some lists to store important info. The script processes each line
 # individually, but doesn't know which CDS will be the end CDS until it
